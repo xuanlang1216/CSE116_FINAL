@@ -11,13 +11,14 @@ class DeckOfCards {
  deck(52)=new Cards("J",14)
  deck(53)=new Cards("J",14)
 
- def Shuffle():Unit={
-    for (i <- 0 to 52){
-     val r :Int =  (Math.random()*52).toInt
-     val Temp :Cards = deck(i)
-     deck(i)= deck(r)
+ def Shuffle():Unit= {
+   for (i <- 0 to 52) {
+     val r: Int = (Math.random() * 52).toInt
+     val Temp: Cards = deck(i)
+     deck(i) = deck(r)
      deck(r) = Temp
-    }
+   }
+ }
 
   def draw(Player1:Player,Player2:Player,Player3:Player,Player4:Player):Unit={
     Player1.myCards = deck.slice(0,13)
@@ -26,7 +27,15 @@ class DeckOfCards {
     Player3.myCards = deck.slice(39,53)
   }
 
+  override def toString: String = {
+    var output =""
+    for (i <- deck){
+      output += i.Num + i.suit +"\n"
+    }
+    output
+  }
 
- }
+
+
 
 }
