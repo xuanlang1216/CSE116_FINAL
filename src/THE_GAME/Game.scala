@@ -5,6 +5,16 @@ import play.api.libs.json.{JsValue,Json}
 class Game {
 
   var thisCards :DeckOfCards =  new DeckOfCards
-  thisCards.Shuffle()
+
+
+  def start():Unit={
+    thisCards.Shuffle()
+  }
+
+  def call():Unit= {
+
+  }
+
+
 
 }

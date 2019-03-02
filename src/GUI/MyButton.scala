@@ -17,6 +17,7 @@ class MyButton (game:Game,xScale:Double,yScale:Double) extends Button {
 class StartButton(game: Game, xScale: Double = 1.0, yScale: Double = 1.0)extends MyButton(game,xScale,yScale){
   text = "Start"
   style = "-fx-font: 24 ariel;"
+  onAction = (event:ActionEvent) => game.start()
 }
 
 class CallButton(game: Game, xScale: Double = 1.0, yScale: Double = 1.0)extends MyButton(game,xScale,yScale){

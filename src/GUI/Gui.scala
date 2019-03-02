@@ -17,6 +17,11 @@ object Gui extends JFXApp {
     style = "-fx-font: 18 ariel;"
   }
 
+  var RemainingCard : TextField = new TextField{
+    editable = false
+    style = "-fx-font: 18 ariel;"
+  }
+
   val Start_B = new StartButton(game,2 ,2)
   val Call_B = new CallButton(game,2,2)
 
@@ -28,8 +33,15 @@ object Gui extends JFXApp {
            add(Start_B,0,0,3,2)
            add(CardDisplay,2,2)
            add(Call_B,0,4)
+           add(RemainingCard,0,5)
         }
       )
     }
+
+    AnimationTimer(Update).start()
+  }
+
+  def Update(time:Long):Unit={
+    RemainingCard.text = "Remaining Cards: 0"
   }
 }
