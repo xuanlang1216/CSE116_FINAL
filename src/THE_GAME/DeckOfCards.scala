@@ -20,11 +20,12 @@ class DeckOfCards {
    }
  }
 
-  def draw(Player1:Player,Player2:Player,Player3:Player,Player4:Player):Unit={
-    Player1.myCards = deck.slice(0,13)
-    Player2.myCards = deck.slice(13,26)
-    Player3.myCards = deck.slice(26,39)
-    Player3.myCards = deck.slice(39,53)
+  //deal cards : First Player and Third Player get 14 cards and others 2 get 13 Cards
+  def deal(Player1:Player,Player2:Player,Player3:Player,Player4:Player):Unit={
+    Player1.myCards = deck.slice(0,14)
+    Player2.myCards = deck.slice(14,27)
+    Player3.myCards = deck.slice(27,41)
+    Player4.myCards = deck.slice(41,54)
   }
 
   override def toString: String = {
