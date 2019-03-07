@@ -33,6 +33,7 @@ class testsDeckOfCards extends FunSuite {
     assert(Jokers==2,"Joker")
   }
   var testRepeatation:Boolean = true
+  //May nor test properly(numbers of cards are different)
   test("Deal"){
     assert(Player1.myCards.length==14)
     assert(Player2.myCards.length==13)

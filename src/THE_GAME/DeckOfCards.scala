@@ -9,7 +9,7 @@ class DeckOfCards {
     deck(i+39) = new Cards("C",i+1)
  }
  deck(52)=new Cards("J",14)
- deck(53)=new Cards("J",14)
+ deck(53)=new Cards("J",15)
 
  def Shuffle():Unit= {
    for (i <- 0 to 52) {
