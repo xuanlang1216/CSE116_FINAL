@@ -5,7 +5,7 @@ import THE_GAME._
 
 class testsDeckOfCards extends FunSuite {
 
-  var TestDeck :DeckOfCards= new DeckOfCards
+  /*var TestDeck :DeckOfCards= new DeckOfCards
   TestDeck.Shuffle()
   var Diamonds:Int=0
   var Spades:Int=0
@@ -51,7 +51,7 @@ class testsDeckOfCards extends FunSuite {
       Player4.myCards.foreach(y => if (y.toString == x.toString) testRepeatation=false)
     })
     assert(testRepeatation,"Repeated")
-  }
+  }*/
 
 
 

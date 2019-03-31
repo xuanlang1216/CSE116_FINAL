@@ -1,31 +1,26 @@
 package THE_GAME
 
+import scala.util.Random
+
 class DeckOfCards {
- var deck:Array[Cards]= new Array[Cards](54)
+ var deck:List[Cards]= List()
  for ( i <- 0 to 12){
-    deck(i) = new Cards("S",i+1)
-    deck(i+13) = new Cards("D",i+1)
-    deck(i+26) = new Cards("H",i+1)
-    deck(i+39) = new Cards("C",i+1)
+    deck = new Cards("S",i+1)::deck
+    deck = new Cards("D",i+1)::deck
+    deck= new Cards("H",i+1)::deck
+    deck = new Cards("C",i+1)::deck
  }
- deck(52)=new Cards("J",14)
- deck(53)=new Cards("J",14)
+  Shuffle()
 
  def Shuffle():Unit= {
-   for (i <- 0 to 52) {
-     val r: Int = (Math.random() * 52).toInt
-     val Temp: Cards = deck(i)
-     deck(i) = deck(r)
-     deck(r) = Temp
-   }
+   deck=Random.shuffle(deck)
  }
 
-  //deal cards : First Player and Third Player get 14 cards and others 2 get 13 Cards
-  def deal(Player1:Player,Player2:Player,Player3:Player,Player4:Player):Unit={
-    Player1.myCards = deck.slice(0,14)
-    Player2.myCards = deck.slice(14,27)
-    Player3.myCards = deck.slice(27,41)
-    Player4.myCards = deck.slice(41,54)
+  //deal cards : Player take 13 cards from the deck and the deck loss 13 cards
+  def deal():List[Cards]={
+    val cards:List[Cards] = deck.take(13)
+    deck=deck.takeRight(deck.length-13)
+    cards
   }
 
   override def toString: String = {

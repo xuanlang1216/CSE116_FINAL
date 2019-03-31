@@ -1,32 +1,75 @@
 package THE_GAME
 
 import play.api.libs.json.{JsValue,Json}
+import THE_GAME.states._
 
 class Game {
 
-  var thisCards :DeckOfCards =  new DeckOfCards
+  var CardsOnDesk :List[Cards] =  List()
 
-  var Player1 : Player = new Player
-  var Player2:Player=new Player
-  var Player3:Player =new Player
-  var Player4:Player=new Player
+  var Players:List[Player]=List()
 
+  var currentTime:Long = System.nanoTime()
 
+  var dealCards:DeckOfCards=new DeckOfCards
+
+  var CurrentPlayer:Int =0
+
+  var GameState:gameState= new nonSlapState(this)
+
+  var lastUpdateTime:Long=System.nanoTime()
+
+  //deal 13 cards to each player
   def start():Unit={
-    thisCards.Shuffle()
-    thisCards.deal(Player1,Player2,Player3,Player4)
+     for (i<- Players){
+       dealCard(i)
+     }
   }
 
-  def call():Unit= {
-
-  }
-
-  def Has_A_Winner():Boolean={
-    if (Player1.myCards.isEmpty|Player2.myCards.isEmpty|Player3.myCards.isEmpty|Player4.myCards.isEmpty)
-      true
+  def dealCard(thePlayer:Player):Unit={
+    if(dealCards.deck.nonEmpty){
+      thePlayer.myCards=dealCards.deal()
+    }
     else
-      false
+    {
+      dealCards=new DeckOfCards
+      thePlayer.myCards=dealCards.deal()
+    }
   }
+
+  def PlayerJoin(Join:Player):Unit={
+     Players=Join::Players
+     dealCard(Players.head)
+
+  }
+
+  def CurrentPlayerPlay():Unit={
+      if(Players.apply(CurrentPlayer).myCards.nonEmpty){
+        CardsOnDesk=Players.apply(CurrentPlayer).PlayCard()::CardsOnDesk
+      }
+      else{
+        Players.apply(CurrentPlayer).Point+=1
+        dealCard(Players.apply(CurrentPlayer))
+        CardsOnDesk=Players.apply(CurrentPlayer).PlayCard()::CardsOnDesk
+      }
+  }
+
+  def DisplayLastCardOnDesk():String={
+    if (CardsOnDesk.nonEmpty){
+      CardsOnDesk.head.toString
+    }
+    else{
+      "No Card on Desk"
+    }
+
+  }
+
+  def update(time:Long):Unit={
+
+  }
+
+
+
 
 
 
