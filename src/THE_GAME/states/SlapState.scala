@@ -8,7 +8,7 @@ class SlapState(thegame:Game) extends gameState(thegame ) {
 
   val system = akka.actor.ActorSystem("system")
   import system.dispatcher
-  system.scheduler.scheduleOnce(5000 milliseconds) {
+  system.scheduler.scheduleOnce(3000 milliseconds) {
     thegame.GameState=new nonSlapState(thegame)
   }
 

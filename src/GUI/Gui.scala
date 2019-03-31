@@ -44,7 +44,7 @@ object Gui extends JFXApp {
 
   this.stage = new PrimaryStage{
     title = "The Slapjack Game"
-    scene = new Scene(500,400){
+    scene = new Scene(1000,800){
       content = List(
          new GridPane{
            add(CardDisplay,0,2)
@@ -52,7 +52,7 @@ object Gui extends JFXApp {
            add(RemainingCard,0,5)
            add(PlayCard_B,2,4)
            add(PointDisplay,2,2)
-           add(gameinfo,4,3)
+           add(gameinfo,0,10)
         }
       )
     }
@@ -69,7 +69,7 @@ object Gui extends JFXApp {
       if(k<game.CardsOnDesk.length){
         Gameinfo=Gameinfo+game.CardsOnDesk.apply(k).toString
       }
-      Gameinfo=Gameinfo+"                   "
+      Gameinfo=Gameinfo+"                       "
       if(k<game.Players.head.myCards.length){
         Gameinfo=Gameinfo+game.Players.head.myCards.apply(k).toString
       }

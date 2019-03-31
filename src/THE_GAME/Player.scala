@@ -23,5 +23,6 @@ class Player {
 
    def shuffle():Unit={
       myCards=Random.shuffle(myCards)
+
    }
 }
